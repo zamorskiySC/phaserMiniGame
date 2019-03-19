@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e200f66f-674e-4d60-bde9-83d7251df420" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,14 +18,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+            <state relative-caret-position="380">
+              <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
               <folding>
                 <element signature="n#Boot#0" />
                 <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
                 <element signature="n#!!block;n#preload#0;n#Game#0" />
                 <element signature="e#5783#5965#0" />
-                <element signature="n#!!block;n#nextStep#0;n#Game#0" />
                 <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
                 <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
                 <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
@@ -37,7 +35,6 @@
                 <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
                 <element signature="n#!!block;n#placeText#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeText#0;n#Game#0" />
                 <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
                 <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
                 <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
@@ -51,18 +48,17 @@
                 <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
                 <element signature="n#!!block;n#addArrow#0;n#Game#0" />
+                <element signature="n#!!block;n#resizeArrow#0;n#Game#0" />
+                <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
                 <element signature="n#!!block;n#clearAll#0;n#Game#0" />
                 <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
                 <element signature="n#!!block;n#update#0;n#Game#0" />
                 <element signature="n#Step#0" />
-                <element signature="n#!!block;n#create#0;n#Finish#0" />
-                <element signature="n#!!block;n#resize#0;n#Finish#0" />
+                <element signature="n#Finish#0" />
                 <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
                 <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
-                <element signature="n#!!block;n#placeTextContainer#0;n#Finish#0" />
-                <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
                 <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
                 <element signature="e#27944#28324#0" />
@@ -135,7 +131,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -201,12 +197,12 @@
       <workItem from="1551436299553" duration="1277000" />
       <workItem from="1551774031720" duration="91034000" />
       <workItem from="1552569906167" duration="12339000" />
-      <workItem from="1552648778316" duration="40670000" />
+      <workItem from="1552648778316" duration="43758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186890000" />
+    <option name="totallyTimeSpent" value="189978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -377,14 +373,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
+        <state relative-caret-position="380">
+          <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
           <folding>
             <element signature="n#Boot#0" />
             <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
             <element signature="n#!!block;n#preload#0;n#Game#0" />
             <element signature="e#5783#5965#0" />
-            <element signature="n#!!block;n#nextStep#0;n#Game#0" />
             <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
             <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
             <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
@@ -395,7 +390,6 @@
             <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
             <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
             <element signature="n#!!block;n#placeText#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeText#0;n#Game#0" />
             <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
             <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
             <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
@@ -409,18 +403,17 @@
             <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
             <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
             <element signature="n#!!block;n#addArrow#0;n#Game#0" />
+            <element signature="n#!!block;n#resizeArrow#0;n#Game#0" />
+            <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
             <element signature="n#!!block;n#clearAll#0;n#Game#0" />
             <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
             <element signature="n#!!block;n#update#0;n#Game#0" />
             <element signature="n#Step#0" />
-            <element signature="n#!!block;n#create#0;n#Finish#0" />
-            <element signature="n#!!block;n#resize#0;n#Finish#0" />
+            <element signature="n#Finish#0" />
             <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
             <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
-            <element signature="n#!!block;n#placeTextContainer#0;n#Finish#0" />
-            <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
             <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
             <element signature="e#27944#28324#0" />

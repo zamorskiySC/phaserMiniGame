@@ -205,8 +205,17 @@ class Game extends Phaser.Scene
             case this.nextReason.placeBuilding:
                 break;
             case this.nextReason.getLevel4:
+                let currBuildingId = 0;
+                let counter = 0;
+                this.buildingsOnMap.forEach(element => {
+                    if (element === this.currentBuilding)
+                        currBuildingId = counter;
+                    counter++;
+                });
                 this.buildings.forEach(element => {
-                    element.clearTint();
+                    if (element.getData('id') !== currBuildingId){
+                        element.setTint(0x444444);
+                    }
                 });
                 this.arrow.destroy();
                 this.character.destroy();
@@ -381,7 +390,8 @@ class Game extends Phaser.Scene
             let back_text = this.add.sprite(0, 0, 'ver_text');
             back_text.setDisplaySize(window.innerWidth, window.innerHeight/7);
             back_text.setData('name', 'back');
-            let text = this.add.text(-40, - 20, 'My captain,\nBuild Constructions', {fontSize: '25px', align: 'center'});
+            let fontS = window.innerWidth/27;
+            let text = this.add.text(-40, - 20, 'My captain,\nBuild Constructions', {fontSize: fontS.toString() + 'px', align: 'center'});
             text.setData('name', 'text');
             this.textContainer.add(back_text);
             this.textContainer.add(text)
@@ -413,7 +423,8 @@ class Game extends Phaser.Scene
                         element.setDisplaySize(window.innerWidth, window.innerHeight/7);
                         break;
                     case 'text':
-                        element.setFontSize('25px');
+                        let fontS = window.innerWidth/27;
+                        element.setFontSize( fontS.toString() + 'px');
                         element.x = -40;
                         element.y = -20;
                         break;
@@ -870,6 +881,7 @@ class Finish extends Phaser.Scene
     }
 
     create(){
+        this.cameras.resize(window.innerWidth, window.innerHeight);
         this.placeBackground('preloaderBackground');
         this.placeLogo('logo_horizontal');
         this.placeTextContainer();
@@ -943,7 +955,8 @@ class Finish extends Phaser.Scene
             back.setDisplaySize(window.innerWidth/1.5, window.innerHeight/4);
             back.setData('name', 'back');
             this.textContainer.add(back);
-            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: '25px', align: 'center'});
+            let fontS = window.innerWidth/26;
+            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: fontS.toString() + 'px', align: 'center'});
             text.setData('name', 'text');
             text.x = -text.width/2;
             text.y = -(text.height/2) * 3;
@@ -955,7 +968,8 @@ class Finish extends Phaser.Scene
             back.setDisplaySize(window.innerWidth/1.8, window.innerHeight/4);
             back.setData('name', 'back');
             this.textContainer.add(back);
-            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: '25px', align: 'center'});
+            let fontS = window.innerWidth/26;
+            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: fontS.toString() + 'px', align: 'center'});
             text.setData('name', 'text');
             text.x = -text.width/2;
             text.y = -text.height/2;
@@ -975,6 +989,8 @@ class Finish extends Phaser.Scene
                         element.setDisplaySize(window.innerWidth/1.5, window.innerHeight/4);
                         break;
                     case 'text':
+                        let fontS = window.innerWidth/26;
+                        element.setFontSize( fontS.toString() + 'px');
                         element.x = -element.width/2;
                         element.y = -(element.height/2) * 3;
                         break;
@@ -991,6 +1007,8 @@ class Finish extends Phaser.Scene
                         element.setDisplaySize(window.innerWidth/1.8, window.innerHeight/4);
                         break;
                     case 'text':
+                        let fontS = window.innerWidth/40;
+                        element.setFontSize( fontS.toString() + 'px');
                         element.x = -element.width/2;
                         element.y = -element.height/2;
                         break;
