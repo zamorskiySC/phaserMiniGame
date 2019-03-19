@@ -124,12 +124,16 @@ class Preloader extends Phaser.Scene
     }
 
     placeLogo(image){
-        let logo = this.add.sprite(0,0,image);
-        let coof = logo.height / logo.width;
-        logo.setDisplaySize(window.innerWidth/2.5,window.innerWidth/2.5 * coof );
-        logo.x = window.innerWidth/2;
-        logo.y = 100;
-        return logo;
+        this.logoHorizontal = this.add.sprite(0,0,image);
+        let coof = this.logoHorizontal.height / this.logoHorizontal.width;
+        this.logoHorizontal.setDisplaySize(300,300 * coof);
+        if (window.innerHeight/window.innerWidth > 1) {
+            this.logoHorizontal.x = window.innerWidth / 2;
+            this.logoHorizontal.y = 100;
+        }else{
+            this.logoHorizontal.x = window.innerWidth - 250;
+            this.logoHorizontal.y = 100;
+        }
     }
 
     create(){
@@ -210,6 +214,7 @@ class Game extends Phaser.Scene
                 this.buildingButContainer.x = window.innerWidth/2;
                 this.buildingButContainer.y = (window.innerHeight/5) * 3.5;
                 this.installButContainer.x = window.innerWidth/2;
+                this.installButContainer.y = window.innerHeight - 100;
                 break;
         }
     }
@@ -247,14 +252,19 @@ class Game extends Phaser.Scene
     freePlayBuildingActions(element){
         if (!element.getData('active')) {
             this.resizeBuildingButtons();
-            element.scaleX = 0.3;
-            element.scaleY = 0.3;
             this.canChoose = false;
             this.currentBuilding = this.buildingsOnMap[element.getData('id')];
             this.activeBuildingBut.setData('active', false);
             element.setData('active', true);
             this.activeBuildingBut = element;
         }
+        this.buildings.forEach(inElement => {
+            if (inElement.getData('id') !== element.getData('id')){
+                inElement.setTint(0x444444);
+            }else{
+                element.clearTint();
+            }
+        });
     }
     // Holes buttons listeners
     addHolesListener(){
@@ -454,7 +464,7 @@ class Game extends Phaser.Scene
             });
             this.installButContainer.y = window.innerHeight - text.displayHeight - 30;
         }else{
-            this.installButContainer.x = (window.innerWidth / 7) * 2;
+            this.installButContainer.x = this.textContainer.x;
             this.installButContainer.y = (window.innerHeight/5) * 4.3;
             let button_back = this.add.image(-20, 0, 'button_regular');
             let coof = button_back.height / button_back.width;
@@ -485,36 +495,57 @@ class Game extends Phaser.Scene
 
     replaceInstallButton(){
         if (window.innerHeight/window.innerWidth > 1){
-            this.installButContainer.x = (window.innerWidth / 3) * 2;
-            this.installButContainer.y = window.innerHeight;
+            if (this.currentStep === 2) {
+                this.installButContainer.x = window.innerWidth / 2;
+                this.installButContainer.y = window.innerHeight - 100;
+            }else {
+                this.installButContainer.x = (window.innerWidth / 3) * 2;
+                this.installButContainer.y = window.innerHeight;
+            }
             this.installButContainer.list.forEach(element => {
                 let coof = 0;
                 switch(element.getData('name')){
                     case 'back':
                         coof = element.height / element.width;
-                        element.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+                        if (this.currentStep === 2)
+                            element.setDisplaySize(window.innerWidth / 1.5, window.innerWidth / 1.5 * coof);
+                        else
+                            element.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
                         break;
                     case 'text':
                         coof = element.height / element.width;
-                        element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+                        if (this.currentStep === 2)
+                            element.setDisplaySize(window.innerWidth / 2.5, window.innerWidth / 2.5 * coof);
+                        else
+                            element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
                         this.installButContainer.y = window.innerHeight - element.displayHeight - 30;
                         break;
                 }
             });
-
         }else{
-            this.installButContainer.x = (window.innerWidth / 7) * 2;
-            this.installButContainer.y = (window.innerHeight/5) * 4.3;
+            if (this.currentStep === 2) {
+                this.installButContainer.x = window.innerWidth / 2;
+                this.installButContainer.y = (window.innerHeight/5) * 4.5;
+            }else {
+                this.installButContainer.x = (window.innerWidth / 7) * 2;
+                this.installButContainer.y = (window.innerHeight/5) * 4.3;
+            }
             this.installButContainer.list.forEach(element => {
                 let coof = 0;
                 switch(element.getData('name')){
                     case 'back':
                         coof = element.height / element.width;
-                        element.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
+                        if (this.currentStep === 2)
+                            element.setDisplaySize(window.innerWidth / 4, window.innerWidth / 4 * coof);
+                        else
+                            element.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
                         break;
                     case 'text':
                         coof = element.height / element.width;
-                        element.setDisplaySize(window.innerWidth / 8, window.innerWidth / 8 * coof);
+                        if (this.currentStep === 2)
+                            element.setDisplaySize(window.innerWidth / 6, window.innerWidth / 6 * coof);
+                        else
+                            element.setDisplaySize(window.innerWidth / 8, window.innerWidth / 8 * coof);
                         break;
                 }
             });
@@ -616,7 +647,7 @@ class Game extends Phaser.Scene
 
     // Method for placing buildings
     placeBuilding(position, width, image, id){
-        let building = this.add.sprite(position.x ,position.y - 40, image);
+        let building = this.add.sprite(position.x + 5,position.y - 50, image);
         let coof = building.width/building.height;
         building.setDisplaySize(width*0.8,width*0.8/coof);
         this.tweens.add({
@@ -636,12 +667,12 @@ class Game extends Phaser.Scene
         this.placedBuildings.forEach(element => {
             let width = 0;
             if (window.innerHeight/window.innerWidth > 1) {
-                element.x = this.holePlaces[element.getData('id')].x / this.vertCoof;
+                element.x = this.holePlaces[element.getData('id')].x / this.vertCoof + 5;
                 element.y = this.holePlaces[element.getData('id')].y / this.vertCoof - 20;
                 width = 110 / this.vertCoof;
             }
             else {
-                element.x = this.holePlaces[element.getData('id')].x / this.horCoof;
+                element.x = this.holePlaces[element.getData('id')].x / this.horCoof + 5;
                 element.y = this.holePlaces[element.getData('id')].y / this.horCoof - 20;
                 width = 110 / this.horCoof;
             }
@@ -722,7 +753,7 @@ class Game extends Phaser.Scene
     // Work with arrow
     addArrow(){
         this.arrow = this.add.sprite(this.buildingButContainer.x + this.buildings[0].x,
-            this.buildingButContainer.y + this.buildings[0].y - this.buildings[0].displayWidth,'arrow');
+            this.buildingButContainer.y + this.buildings[0].y - this.buildings[0].displayWidth, 'arrow');
         let coof = this.arrow.height/this.arrow.width;
         this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
         this.tweens.add({

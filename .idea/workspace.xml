@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e200f66f-674e-4d60-bde9-83d7251df420" name="Default Changelist" comment="" />
+    <list default="true" id="e200f66f-674e-4d60-bde9-83d7251df420" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,17 +19,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-791">
-              <caret line="359" column="31" selection-start-line="359" selection-start-column="31" selection-end-line="359" selection-end-column="31" />
+            <state relative-caret-position="313">
+              <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
               <folding>
                 <element signature="n#Boot#0" />
-                <element signature="n#Preloader#0" />
+                <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
                 <element signature="n#!!block;n#preload#0;n#Game#0" />
                 <element signature="e#5783#5965#0" />
-                <element signature="n#!!block;n#create#0;n#Game#0" />
+                <element signature="n#!!block;n#nextStep#0;n#Game#0" />
                 <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
-                <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
-                <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
                 <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
                 <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
                 <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
@@ -34,6 +35,7 @@
                 <element signature="n#!!block;n#setTint#0;n#Game#0" />
                 <element signature="n#!!block;n#removeTint#0;n#Game#0" />
                 <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
+                <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
                 <element signature="n#!!block;n#placeText#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeText#0;n#Game#0" />
                 <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
@@ -48,7 +50,7 @@
                 <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
                 <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-                <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
+                <element signature="n#!!block;n#addArrow#0;n#Game#0" />
                 <element signature="n#!!block;n#clearAll#0;n#Game#0" />
                 <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
                 <element signature="n#!!block;n#update#0;n#Game#0" />
@@ -95,7 +97,14 @@
       <find>module.exports</find>
       <find>ex</find>
       <find>coof</find>
+      <find>setTint</find>
+      <find>placedB</find>
+      <find>buil</find>
+      <find>buildings</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -126,12 +135,13 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -191,15 +201,15 @@
       <workItem from="1551436299553" duration="1277000" />
       <workItem from="1551774031720" duration="91034000" />
       <workItem from="1552569906167" duration="12339000" />
-      <workItem from="1552648778316" duration="33930000" />
+      <workItem from="1552648778316" duration="40670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180150000" />
+    <option name="totallyTimeSpent" value="186890000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
@@ -213,7 +223,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -223,6 +233,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Files/MainGame.js" />
@@ -341,17 +377,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-791">
-          <caret line="359" column="31" selection-start-line="359" selection-start-column="31" selection-end-line="359" selection-end-column="31" />
+        <state relative-caret-position="313">
+          <caret line="265" column="13" lean-forward="true" selection-start-line="265" selection-start-column="13" selection-end-line="265" selection-end-column="13" />
           <folding>
             <element signature="n#Boot#0" />
-            <element signature="n#Preloader#0" />
+            <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
             <element signature="n#!!block;n#preload#0;n#Game#0" />
             <element signature="e#5783#5965#0" />
-            <element signature="n#!!block;n#create#0;n#Game#0" />
+            <element signature="n#!!block;n#nextStep#0;n#Game#0" />
             <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
-            <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
-            <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
             <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
             <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
             <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
@@ -359,6 +393,7 @@
             <element signature="n#!!block;n#setTint#0;n#Game#0" />
             <element signature="n#!!block;n#removeTint#0;n#Game#0" />
             <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
+            <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
             <element signature="n#!!block;n#placeText#0;n#Game#0" />
             <element signature="n#!!block;n#resizeText#0;n#Game#0" />
             <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
@@ -373,7 +408,7 @@
             <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
             <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
             <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-            <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
+            <element signature="n#!!block;n#addArrow#0;n#Game#0" />
             <element signature="n#!!block;n#clearAll#0;n#Game#0" />
             <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
             <element signature="n#!!block;n#update#0;n#Game#0" />
