@@ -170,13 +170,13 @@ class Game extends Phaser.Scene
     create(){
         this.main_background = this.placeBackground('background');
         this.currentStep = 0;
-        this.placeText();
-        this.character = this.placeCharacter('character');
         this.logoHorizontal = this.placeLogo('logo_horizontal');
         this.buildings = this.placeBuildingsButton();
         this.addArrow();
         this.nextStep();
+        this.placeText();
         this.createInstallButton();
+        this.character = this.placeCharacter('character');
         this.canChoose = true;
         this.addButtonListeners();
         this.scale.on('resize', this.resize, this);
@@ -222,8 +222,7 @@ class Game extends Phaser.Scene
                 this.textContainer.destroy();
                 this.buildingButContainer.x = window.innerWidth/2;
                 this.buildingButContainer.y = (window.innerHeight/5) * 3.5;
-                this.installButContainer.x = window.innerWidth/2;
-                this.installButContainer.y = window.innerHeight - 100;
+                this.replaceInstallButtonFreePlay();
                 break;
         }
     }
@@ -318,7 +317,10 @@ class Game extends Phaser.Scene
         if (this.steps[this.currentStep].holePlaced)
             this.resizeHoles();
         this.resizeBuildingButtons();
-        this.replaceInstallButton();
+        if (this.currentStep === 2)
+            this.replaceInstallButtonFreePlay();
+        else
+            this.replaceInstallButton();
         this.replaceArrow();
     }
 
@@ -338,7 +340,11 @@ class Game extends Phaser.Scene
         let positions = [-window.innerWidth/5, 0, window.innerWidth/5];
         for (let i = 0;i < 3;i++){
             buildings[i] = this.add.sprite(positions[i],0,this.buildingIcons[i]);
-            let width = window.innerWidth/6;
+            let width = 0;
+            if (window.innerHeight/window.innerWidth > 1)
+                width = window.innerWidth/5;
+            else
+                width = window.innerWidth/7;
             let coof = buildings[i].height/buildings[i].width;
             buildings[i].setDisplaySize(width,width*coof);
             buildings[i].setInteractive();
@@ -348,6 +354,13 @@ class Game extends Phaser.Scene
 
         }
         this.buildingButContainer.add(buildings);
+        if (window.innerHeight/window.innerWidth > 1){
+            this.buildingButContainer.y = (window.innerHeight/5) * 3.2;
+            this.buildingButContainer.x = (window.innerWidth/3) * 1.9;
+        }else{
+            this.buildingButContainer.y = (window.innerHeight/6)  * 5;
+            this.buildingButContainer.x = (window.innerWidth/3) * 2;
+        }
         return buildings;
     }
 
@@ -457,17 +470,21 @@ class Game extends Phaser.Scene
         this.installButContainer = this.add.container(0, 0);
         if (window.innerHeight/window.innerWidth > 1){
             this.installButContainer.x = (window.innerWidth / 3) * 2;
-            this.installButContainer.y = window.innerHeight/5;
-            let button_back = this.add.image(-20, 0, 'button_regular');
+            this.installButContainer.y = (window.innerHeight/5) * 4;
+            // Placing button background
+            let button_back = this.add.image(0, 0, 'button_regular');
             let coof = button_back.height / button_back.width;
-            button_back.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+            button_back.setDisplaySize(window.innerWidth / 2.5, window.innerWidth / 2.5 * coof);
             button_back.setData('name', 'back');
+            // Placing button text
             let text = this.add.image(0, 0, 'install_text');
             coof = text.height / text.width;
-            text.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+            text.setDisplaySize(window.innerWidth / 3.5, window.innerWidth / 3.5 * coof);
             text.setData('name', 'text');
+            // Adding objects to container
             this.installButContainer.add(button_back);
             this.installButContainer.add(text);
+            // Set text interactive
             text.setInteractive();
             text.on('pointerup', function () {
                 let win = window.open('https://play.google.com/store/apps/details?id=com.whaleapp.piratesails', '_blank');
@@ -475,18 +492,22 @@ class Game extends Phaser.Scene
             });
             this.installButContainer.y = window.innerHeight - text.displayHeight - 30;
         }else{
-            this.installButContainer.x = this.textContainer.x;
+            this.installButContainer.x = (window.innerWidth / 7) * 2;
             this.installButContainer.y = (window.innerHeight/5) * 4.3;
-            let button_back = this.add.image(-20, 0, 'button_regular');
+            // Placing button background
+            let button_back = this.add.image(0, 0, 'button_regular');
             let coof = button_back.height / button_back.width;
-            button_back.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
+            button_back.setDisplaySize(window.innerWidth / 5.5, window.innerWidth / 5.5 * coof);
             button_back.setData('name', 'back');
+            // Placing button text
             let text = this.add.image(0, 0, 'install_text');
             coof = text.height / text.width;
-            text.setDisplaySize(window.innerWidth / 8, window.innerWidth / 8 * coof);
+            text.setDisplaySize(window.innerWidth / 8.5, window.innerWidth / 8.5 * coof);
             text.setData('name', 'text');
+            // Adding objects to container
             this.installButContainer.add(button_back);
             this.installButContainer.add(text);
+            // Set text interactive
             text.setInteractive();
             text.on('pointerup', function () {
                 let win = window.open('https://play.google.com/store/apps/details?id=com.whaleapp.piratesails', '_blank');
@@ -506,57 +527,72 @@ class Game extends Phaser.Scene
 
     replaceInstallButton(){
         if (window.innerHeight/window.innerWidth > 1){
-            if (this.currentStep === 2) {
-                this.installButContainer.x = window.innerWidth / 2;
-                this.installButContainer.y = window.innerHeight - 100;
-            }else {
-                this.installButContainer.x = (window.innerWidth / 3) * 2;
-                this.installButContainer.y = window.innerHeight;
-            }
+            this.installButContainer.x = (window.innerWidth / 3) * 2;
+            this.installButContainer.y = window.innerHeight;
             this.installButContainer.list.forEach(element => {
                 let coof = 0;
                 switch(element.getData('name')){
                     case 'back':
                         coof = element.height / element.width;
-                        if (this.currentStep === 2)
-                            element.setDisplaySize(window.innerWidth / 1.5, window.innerWidth / 1.5 * coof);
-                        else
-                            element.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+                        element.setDisplaySize(window.innerWidth / 2.5, window.innerWidth / 2.5 * coof);
                         break;
                     case 'text':
                         coof = element.height / element.width;
-                        if (this.currentStep === 2)
-                            element.setDisplaySize(window.innerWidth / 2.5, window.innerWidth / 2.5 * coof);
-                        else
-                            element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+                        element.setDisplaySize(window.innerWidth / 3.5, window.innerWidth / 3.5 * coof);
                         this.installButContainer.y = window.innerHeight - element.displayHeight - 30;
                         break;
                 }
             });
         }else{
-            if (this.currentStep === 2) {
-                this.installButContainer.x = window.innerWidth / 2;
-                this.installButContainer.y = (window.innerHeight/5) * 4.5;
-            }else {
-                this.installButContainer.x = (window.innerWidth / 7) * 2;
-                this.installButContainer.y = (window.innerHeight/5) * 4.3;
-            }
+            this.installButContainer.x = (window.innerWidth / 7) * 2;
+            this.installButContainer.y = (window.innerHeight/5) * 4.3;
             this.installButContainer.list.forEach(element => {
                 let coof = 0;
                 switch(element.getData('name')){
                     case 'back':
                         coof = element.height / element.width;
-                        if (this.currentStep === 2)
-                            element.setDisplaySize(window.innerWidth / 4, window.innerWidth / 4 * coof);
-                        else
-                            element.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
+                        element.setDisplaySize(window.innerWidth / 5.5, window.innerWidth / 5.5 * coof);
                         break;
                     case 'text':
                         coof = element.height / element.width;
-                        if (this.currentStep === 2)
-                            element.setDisplaySize(window.innerWidth / 6, window.innerWidth / 6 * coof);
-                        else
-                            element.setDisplaySize(window.innerWidth / 8, window.innerWidth / 8 * coof);
+                        element.setDisplaySize(window.innerWidth / 8.5, window.innerWidth / 8.5 * coof);
+                        break;
+                }
+            });
+        }
+    }
+
+    replaceInstallButtonFreePlay(){
+        if (window.innerHeight/window.innerWidth > 1){
+            this.installButContainer.x = window.innerWidth / 2;
+            this.installButContainer.y = window.innerHeight - 100;
+            this.installButContainer.list.forEach(element => {
+                let coof = 0;
+                switch(element.getData('name')){
+                    case 'back':
+                        coof = element.height / element.width;
+                        element.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+                        break;
+                    case 'text':
+                        coof = element.height / element.width;
+                        element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+                        this.installButContainer.y = window.innerHeight - element.displayHeight - 50;
+                        break;
+                }
+            });
+        }else{
+            this.installButContainer.x = window.innerWidth / 2;
+            this.installButContainer.y = (window.innerHeight/5) * 4.5;
+            this.installButContainer.list.forEach(element => {
+                let coof = 0;
+                switch(element.getData('name')){
+                    case 'back':
+                        coof = element.height / element.width;
+                        element.setDisplaySize(window.innerWidth / 4, window.innerWidth / 4 * coof);
+                        break;
+                    case 'text':
+                        coof = element.height / element.width;
+                        element.setDisplaySize(window.innerWidth / 6, window.innerWidth / 6 * coof);
                         break;
                 }
             });
@@ -764,7 +800,7 @@ class Game extends Phaser.Scene
     // Work with arrow
     addArrow(){
         this.arrow = this.add.sprite(this.buildingButContainer.x + this.buildings[0].x,
-            this.buildingButContainer.y + this.buildings[0].y - this.buildings[0].displayWidth, 'arrow');
+            this.buildingButContainer.y  - this.buildings[0].displayHeight, 'arrow');
         let coof = this.arrow.height/this.arrow.width;
         this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
         this.tweens.add({
@@ -774,13 +810,12 @@ class Game extends Phaser.Scene
             repeat: -1,
             yoyo: true
         });
-
     }
 
     replaceArrow(){
         this.tweens.killTweensOf(this.arrow);
         this.arrow.x = this.buildingButContainer.x + this.buildings[0].x;
-        this.arrow.y = this.buildingButContainer.y + this.buildings[0].y - this.buildings[0].displayWidth;
+        this.arrow.y = this.buildingButContainer.y  - this.buildings[0].displayHeight;
         let coof = this.arrow.height/this.arrow.width;
         this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
         this.tweens.add({
@@ -965,10 +1000,10 @@ class Finish extends Phaser.Scene
             this.textContainer.x = window.innerWidth / 2.8;
             this.textContainer.y = (window.innerHeight/5) * 4;
             let back = this.add.sprite(0,0,'ver_text');
-            back.setDisplaySize(window.innerWidth/1.8, window.innerHeight/4);
+            back.setDisplaySize(window.innerWidth/2.5, window.innerHeight/4);
             back.setData('name', 'back');
             this.textContainer.add(back);
-            let fontS = window.innerWidth/26;
+            let fontS = window.innerWidth/40;
             let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: fontS.toString() + 'px', align: 'center'});
             text.setData('name', 'text');
             text.x = -text.width/2;
@@ -1004,7 +1039,7 @@ class Finish extends Phaser.Scene
                 switch(element.getData('name')){
                     case 'back':
                         coof = element.height/element.width;
-                        element.setDisplaySize(window.innerWidth/1.8, window.innerHeight/4);
+                        element.setDisplaySize(window.innerWidth/2.5, window.innerHeight/4);
                         break;
                     case 'text':
                         let fontS = window.innerWidth/40;
@@ -1022,13 +1057,13 @@ class Finish extends Phaser.Scene
         if (window.innerHeight/window.innerWidth > 1) {
             this.buttonContainer.x = window.innerWidth/2;
             this.buttonContainer.y = (window.innerHeight/5) * 4;
-            let button_back = this.add.image(-20, 0, 'button_regular');
+            let button_back = this.add.image(0, 0, 'button_regular');
             let coof = button_back.height / button_back.width;
-            button_back.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+            button_back.setDisplaySize(window.innerWidth / 2.9, window.innerWidth / 2.9 * coof);
             button_back.setData('name', 'button_back');
             let text = this.add.image(0, 0, 'install_text');
             coof = text.height / text.width;
-            text.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+            text.setDisplaySize(window.innerWidth / 3.9, window.innerWidth / 3.9 * coof);
             text.setData('name', 'text');
             this.buttonContainer.add(button_back);
             this.buttonContainer.add(text);
@@ -1040,13 +1075,13 @@ class Finish extends Phaser.Scene
         }else{
             this.buttonContainer.x = (window.innerWidth/5) * 4;
             this.buttonContainer.y = (window.innerHeight/6) * 5;
-            let button_back = this.add.image(-20, 0, 'button_regular');
+            let button_back = this.add.image(0, 0, 'button_regular');
             let coof = button_back.height / button_back.width;
-            button_back.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+            button_back.setDisplaySize(window.innerWidth / 4, window.innerWidth / 4 * coof);
             button_back.setData('name', 'button_back');
             let text = this.add.image(0, 0, 'install_text');
             coof = text.height / text.width;
-            text.setDisplaySize(window.innerWidth / 4.3, window.innerWidth / 4.3 * coof);
+            text.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
             text.setData('name', 'text');
             this.buttonContainer.add(button_back);
             this.buttonContainer.add(text);
@@ -1076,11 +1111,11 @@ class Finish extends Phaser.Scene
                switch(element.getData('name')){
                    case 'button_back':
                        coof = element.height/element.width;
-                       element.setDisplaySize(window.innerWidth / 2, window.innerWidth / 2 * coof);
+                       element.setDisplaySize(window.innerWidth / 2.9, window.innerWidth / 2.9 * coof);
                        break;
                    case 'text':
                        coof = element.height/element.width;
-                       element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+                       element.setDisplaySize(window.innerWidth / 3.9, window.innerWidth / 3.9 * coof);
                        break;
                }
             });
@@ -1092,11 +1127,11 @@ class Finish extends Phaser.Scene
                 switch(element.getData('name')){
                     case 'button_back':
                         coof = element.height/element.width;
-                        element.setDisplaySize(window.innerWidth / 3, window.innerWidth / 3 * coof);
+                        element.setDisplaySize(window.innerWidth / 4, window.innerWidth / 4 * coof);
                         break;
                     case 'text':
                         coof = element.height/element.width;
-                        element.setDisplaySize(window.innerWidth / 4.3, window.innerWidth / 4.3 * coof);
+                        element.setDisplaySize(window.innerWidth / 5, window.innerWidth / 5 * coof);
                         break;
                 }
             });

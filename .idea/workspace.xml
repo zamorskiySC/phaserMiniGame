@@ -18,25 +18,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
+            <state relative-caret-position="527">
+              <caret line="362" column="9" selection-start-line="362" selection-start-column="9" selection-end-line="362" selection-end-column="9" />
               <folding>
                 <element signature="n#Boot#0" />
                 <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
                 <element signature="n#!!block;n#preload#0;n#Game#0" />
                 <element signature="e#5783#5965#0" />
                 <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
+                <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
+                <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
                 <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
                 <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
                 <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
-                <element signature="n#!!block;n#resize#0;n#Game#0" />
                 <element signature="n#!!block;n#setTint#0;n#Game#0" />
                 <element signature="n#!!block;n#removeTint#0;n#Game#0" />
-                <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
-                <element signature="n#!!block;n#placeText#0;n#Game#0" />
-                <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
-                <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
                 <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeBackground#0;n#Game#0" />
                 <element signature="n#!!block;n#placeCharacter#0;n#Game#0" />
@@ -46,21 +42,14 @@
                 <element signature="n#!!block;n#placeBuilding#0;n#Game#0" />
                 <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
                 <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-                <element signature="n#!!block;n#addArrow#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeArrow#0;n#Game#0" />
-                <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
                 <element signature="n#!!block;n#clearAll#0;n#Game#0" />
                 <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
                 <element signature="n#!!block;n#update#0;n#Game#0" />
                 <element signature="n#Step#0" />
-                <element signature="n#Finish#0" />
                 <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
                 <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
-                <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
-                <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
                 <element signature="e#27944#28324#0" />
               </folding>
             </state>
@@ -70,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="109">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -132,8 +121,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
+    <option name="x" value="2445" />
+    <option name="y" value="9" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -197,22 +186,22 @@
       <workItem from="1551436299553" duration="1277000" />
       <workItem from="1551774031720" duration="91034000" />
       <workItem from="1552569906167" duration="12339000" />
-      <workItem from="1552648778316" duration="43758000" />
+      <workItem from="1552648778316" duration="54806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189978000" />
+    <option name="totallyTimeSpent" value="201026000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.24071082" visible="true" weight="0.12802951" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.7592892" side_tool="true" visible="true" weight="0.12802951" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -371,27 +360,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
+        <state relative-caret-position="527">
+          <caret line="362" column="9" selection-start-line="362" selection-start-column="9" selection-end-line="362" selection-end-column="9" />
           <folding>
             <element signature="n#Boot#0" />
             <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
             <element signature="n#!!block;n#preload#0;n#Game#0" />
             <element signature="e#5783#5965#0" />
             <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
+            <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
+            <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
             <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
             <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
             <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
-            <element signature="n#!!block;n#resize#0;n#Game#0" />
             <element signature="n#!!block;n#setTint#0;n#Game#0" />
             <element signature="n#!!block;n#removeTint#0;n#Game#0" />
-            <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
-            <element signature="n#!!block;n#placeText#0;n#Game#0" />
-            <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
-            <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
             <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
             <element signature="n#!!block;n#resizeBackground#0;n#Game#0" />
             <element signature="n#!!block;n#placeCharacter#0;n#Game#0" />
@@ -401,30 +393,16 @@
             <element signature="n#!!block;n#placeBuilding#0;n#Game#0" />
             <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
             <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-            <element signature="n#!!block;n#addArrow#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeArrow#0;n#Game#0" />
-            <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
             <element signature="n#!!block;n#clearAll#0;n#Game#0" />
             <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
             <element signature="n#!!block;n#update#0;n#Game#0" />
             <element signature="n#Step#0" />
-            <element signature="n#Finish#0" />
             <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
             <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
-            <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
-            <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
             <element signature="e#27944#28324#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
