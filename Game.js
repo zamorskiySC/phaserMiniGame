@@ -17,7 +17,7 @@ class Boot extends Phaser.Scene
         this.load.image('preloaderBack', 'Assets/Sprites/preloader_back.jpg');
         this.load.image('preloaderEffect', 'Assets/Sprites/preloader_effect.png');
         this.load.image('logo_horizontal', 'Assets/Sprites/logo-horizontal.png');
-
+        this.load.bitmapFont('CandaraBold', 'Assets/Fonts/CandaraBold.png', 'Assets/Fonts/CandaraBold.fnt');
 
         this.load.once('complete', function () {
 
@@ -47,14 +47,17 @@ class Preloader extends Phaser.Scene
         let background = this.placeBackground('preloaderBackground');
         let progressBar = this.placePreloadBar('preloadBar');
         let logoHorizontal = this.placeLogo('logo_horizontal');
-        //let progressEffect = this.add.sprite(progressBar.x - progressBar.width/2, progressBar.y - 10,'preloaderEffect');
-       // progressEffect.setDisplaySize(50, progressBar.height - 10);
-
+        let progressEffect = this.add.sprite(progressBar.x, progressBar.y - 10,'preloaderEffect');
+        let preloadText = this.addText();
+        progressEffect.setDisplaySize(40, progressBar.height - 10);
+        preloadText.x = progressBar.x;
+        preloadText.y = progressBar.y - 18;
 
         this.load.on('progress', function (value) {
             console.log(value);
-            progressBar.setCrop(0,0,window.innerWidth * value, 35);
-            //progressEffect.x = (progressBar.x - progressBar.width/2) - 142 +   window.innerWidth * value;
+            progressBar.setCrop(0,0,window.innerWidth/2 * value, 35);
+            progressEffect.x = (progressBar.x - progressBar.displayWidth/2) + (window.innerWidth/2 - 90) * value;
+            preloadText.text = parseInt(value * 100, 10).toString() + " %";
         });
 
         this.load.on('fileprogress', function (file) {
@@ -96,15 +99,18 @@ class Preloader extends Phaser.Scene
         this.load.audio('click', 'Assets/Audio/sound_button_click.mp3');
         this.load.audio('base_view', 'Assets/Audio/music_base_view.mp3');
         this.load.audio('collect_resource', 'Assets/Audio/sound_collect_resource.mp3');
+
+
+
     }
 
     placePreloadBar(image){
-        let preloaderBack = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 5,'preloaderBack');
-        preloaderBack.setDisplaySize(window.innerWidth/2, 20);
+        let preloaderBack = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 10,'preloaderBack');
+        preloaderBack.setDisplaySize(window.innerWidth/2, 30);
         let preloaderBar = this.add.sprite(window.innerWidth/2,window.innerHeight/4 * 3,image);
-        preloaderBar.setDisplaySize(window.innerWidth/2, 35);
-        let preloaderFront = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 10,'preloaderFront');
-        preloaderFront.setDisplaySize(window.innerWidth/2 + 60, 45);
+        preloaderBar.setDisplaySize(window.innerWidth/2, 50);
+        let preloaderFront = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 15,'preloaderFront');
+        preloaderFront.setDisplaySize(window.innerWidth/2 + 60, 60);
         return preloaderBar;
     }
 
@@ -134,6 +140,11 @@ class Preloader extends Phaser.Scene
             this.logoHorizontal.x = window.innerWidth - 250;
             this.logoHorizontal.y = 100;
         }
+    }
+
+    addText(){
+        let text = this.add.text(0,0, "", {fontSize: '20px', align: 'center'});
+        return text;
     }
 
     create(){
@@ -404,7 +415,9 @@ class Game extends Phaser.Scene
             back_text.setDisplaySize(window.innerWidth, window.innerHeight/7);
             back_text.setData('name', 'back');
             let fontS = window.innerWidth/27;
-            let text = this.add.text(-40, - 20, 'My captain,\nBuild Constructions', {fontSize: fontS.toString() + 'px', align: 'center'});
+            let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'My captain,\nBuild Constructions', fontS, 1);
+            text.x = -40;
+            text.y = -20;
             text.setData('name', 'text');
             this.textContainer.add(back_text);
             this.textContainer.add(text)
@@ -415,7 +428,7 @@ class Game extends Phaser.Scene
             back_text.setDisplaySize(window.innerWidth/5, window.innerHeight/3);
             back_text.setData('name', 'back');
             let fontS = window.innerWidth/63;
-            let text = this.add.text(0, 0, 'My captain,\nBuild Constructions', {fontSize: fontS.toString() + 'px', align: 'center'});
+            let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'My captain,\nBuild Constructions', fontS, 1);
             text.x = -text.width/2;
             text.y = -((text.height/2) * 3);
             text.setData('name', 'text');
@@ -437,7 +450,7 @@ class Game extends Phaser.Scene
                         break;
                     case 'text':
                         let fontS = window.innerWidth/27;
-                        element.setFontSize( fontS.toString() + 'px');
+                        element.setFontSize( fontS);
                         element.x = -40;
                         element.y = -20;
                         break;
@@ -455,8 +468,7 @@ class Game extends Phaser.Scene
                         break;
                     case 'text':
                         let fontS = window.innerWidth/63;
-                        element.setFontSize( fontS.toString() + 'px');
-                        element.setAlign('center');
+                        element.setFontSize( fontS);
                         element.x = -element.width/2;
                         element.y = -((element.height/2) * 3);
                         break;
@@ -646,9 +658,9 @@ class Game extends Phaser.Scene
         let character = this.add.sprite(0,0, image);
         let coof = character.height/character.width;
         if (window.innerHeight/window.innerWidth > 1){
-            character.setDisplaySize(window.innerHeight/2.5 / coof, window.innerHeight/2.5);
+            character.setDisplaySize(window.innerHeight/3 / coof, window.innerHeight/3);
         }else{
-            character.setDisplaySize(window.innerHeight/2 / coof, window.innerHeight/2);
+            character.setDisplaySize(window.innerHeight/2.7 / coof, window.innerHeight/2.7);
 
         }
         character.x = character.displayWidth/2;
@@ -658,11 +670,10 @@ class Game extends Phaser.Scene
 
     resizeCharacter(){
         let coof = this.character.height/this.character.width;
-
         if (window.innerHeight/window.innerWidth > 1){
-            this.character.setDisplaySize(window.innerHeight/2.5 / coof, window.innerHeight/2.5);
+            this.character.setDisplaySize(window.innerHeight/3 / coof, window.innerHeight/3);
         }else{
-            this.character.setDisplaySize(window.innerHeight/2 / coof, window.innerHeight/2);
+            this.character.setDisplaySize(window.innerHeight/2.7 / coof, window.innerHeight/2.7);
         }
         this.character.x = this.character.displayWidth/2;
         this.character.y = window.innerHeight - this.character.displayHeight/2;
@@ -694,12 +705,13 @@ class Game extends Phaser.Scene
 
     // Method for placing buildings
     placeBuilding(position, width, image, id){
-        let building = this.add.sprite(position.x + 5,position.y - 50, image);
+        let building = this.add.sprite(position.x + 5,position.y - 50, image).setAlpha(0.2);
         let coof = building.width/building.height;
         building.setDisplaySize(width*0.8,width*0.8/coof);
         this.tweens.add({
             targets: building,
             y: position.y - 20,
+            alpha: 1,
             ease: 'Linear',
             duration: 600,
             repeat: 0
@@ -851,15 +863,29 @@ class Game extends Phaser.Scene
         do{
             this.holesContainer.list[this.holesContainer.list.length - 1].destroy();
         }while(this.holesContainer.list.length !== 0);
-        this.character.destroy();
-        do{
-            this.buildingButContainer.list[this.buildingButContainer.list.length - 1].destroy();
-        }while(this.buildingButContainer.list.length !== 0);
+        this.tweens.add({
+            targets: this.buildingButContainer,
+            y: window.innerHeight * 2,
+            duration: 1000,
+            ease: 'Linear',
+            repeat: 0,
+            yoyo: false,
+            loop: 0
+        });
         this.placedBuildings.forEach(element =>{
             element.destroy();
         });
         this.placedBuildings = [];
-        this.installButContainer.destroy();
+        this.tweens.add({
+            targets: this.installButContainer,
+            y: window.innerHeight * 2,
+            duration: 1000,
+            ease: 'Linear',
+            repeat: 0,
+            yoyo: false,
+            loop: 0
+        });
+
     }
 
     showLevelUp(){
@@ -867,11 +893,24 @@ class Game extends Phaser.Scene
         this.setTint();
         this.levelUpContainer = this.add.container(window.innerWidth/2, (window.innerHeight/4) * 3);
         let popup = this.add.sprite(0, 0, 'popup');
+        if (window.innerHeight/window.innerWidth > 1) {
+            popup.y = -10 * 5 * window.innerWidth / window.innerHeight;
+        }else{
+            popup.y = -10 * 3.3 * window.innerWidth / window.innerHeight;
+        }
         let coof = popup.height/popup.width;
-        popup.setDisplaySize(window.innerWidth/2, (window.innerWidth/2) * coof);
+        let sizeF = 20;
+        if (window.innerHeight/window.innerWidth > 1) {
+            sizeF = window.innerWidth/20;
+            popup.setDisplaySize(window.innerWidth / 2, (window.innerWidth / 2) * coof);
+        }else {
+            sizeF = window.innerWidth/30;
+            popup.setDisplaySize(window.innerWidth / 3.5, (window.innerWidth / 3.5) * coof);
+        }
         this.levelUpContainer.add(popup);
-        let txt = this.add.text(0, 20, 'Level up!', {fontSize: '35px'});
+        let txt = this.add.bitmapText(0, 0, 'CandaraBold' ,'Level up!',sizeF, 1);
         txt.x = -txt.width/2;
+        txt.y = -txt.height/2;
         this.levelUpContainer.add(txt);
         this.tweens.add({
             targets: this.levelUpContainer,
@@ -880,7 +919,16 @@ class Game extends Phaser.Scene
             duration: 1000,
             repeat: 0
         });
-        this.time.delayedCall(2000, ()=> {this.scene.start('Finish');},[],0);
+        this.time.delayedCall(1500, ()=>{
+            this.tweens.add({
+                targets: [this.main_background, this.levelUpContainer, this.logoHorizontal],
+                alpha: 0.2,
+                duration: 500,
+                ease: 'Linear',
+                repeat: 0
+            });
+        },[],0);
+        this.time.delayedCall(2100, ()=> {this.scene.start('Finish');},[],0);
     }
 
     update(){
@@ -921,6 +969,23 @@ class Finish extends Phaser.Scene
         this.placeLogo('logo_horizontal');
         this.placeTextContainer();
         this.createInstallButton();
+        this.main_background.setAlpha(0.3);
+        this.textContainer.setAlpha(0.3);
+        this.logoHorizontal.setAlpha(0.3);
+        this.tweens.add({
+            targets: [this.main_background, this.textContainer, this.logoHorizontal],
+            alpha: 1,
+            duration: 500,
+            ease: 'Linear'
+        });
+        let aux_y = this.buttonContainer.y;
+        this.buttonContainer.y = window.innerHeight + this.buttonContainer.height;
+        this.tweens.add({
+            targets: this.buttonContainer,
+            y: aux_y,
+            ease: 'Linear',
+            duration: 500,
+        });
         this.scale.on('resize', this.resize, this);
     }
 
@@ -991,7 +1056,7 @@ class Finish extends Phaser.Scene
             back.setData('name', 'back');
             this.textContainer.add(back);
             let fontS = window.innerWidth/26;
-            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: fontS.toString() + 'px', align: 'center'});
+            let text = this.add.bitmapText(0,0,'CandaraBold', 'Go for new adventures!\n Install full game', fontS, 1);
             text.setData('name', 'text');
             text.x = -text.width/2;
             text.y = -(text.height/2) * 3;
@@ -1004,7 +1069,7 @@ class Finish extends Phaser.Scene
             back.setData('name', 'back');
             this.textContainer.add(back);
             let fontS = window.innerWidth/40;
-            let text = this.add.text(0,0,'Go for new adventures!\n Install full game',{fontSize: fontS.toString() + 'px', align: 'center'});
+            let text = this.add.bitmapText(0,0,'CandaraBold', 'Go for new adventures!\n Install full game', fontS, 1);
             text.setData('name', 'text');
             text.x = -text.width/2;
             text.y = -text.height/2;
@@ -1025,7 +1090,7 @@ class Finish extends Phaser.Scene
                         break;
                     case 'text':
                         let fontS = window.innerWidth/26;
-                        element.setFontSize( fontS.toString() + 'px');
+                        element.setFontSize( fontS);
                         element.x = -element.width/2;
                         element.y = -(element.height/2) * 3;
                         break;
@@ -1043,7 +1108,7 @@ class Finish extends Phaser.Scene
                         break;
                     case 'text':
                         let fontS = window.innerWidth/40;
-                        element.setFontSize( fontS.toString() + 'px');
+                        element.setFontSize( fontS);
                         element.x = -element.width/2;
                         element.y = -element.height/2;
                         break;
