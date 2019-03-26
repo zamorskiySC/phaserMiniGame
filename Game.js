@@ -47,16 +47,19 @@ class Preloader extends Phaser.Scene
         let background = this.placeBackground('preloaderBackground');
         let progressBar = this.placePreloadBar('preloadBar');
         let logoHorizontal = this.placeLogo('logo_horizontal');
-        let progressEffect = this.add.sprite(progressBar.x, progressBar.y - 10,'preloaderEffect');
+        let progressEffect = this.add.sprite(this.preloaderBarContainer.x, this.preloaderBarContainer.y - 5,'preloaderEffect');
         let preloadText = this.addText();
-        progressEffect.setDisplaySize(40, progressBar.height - 10);
-        preloadText.x = progressBar.x;
-        preloadText.y = progressBar.y - 18;
+        progressEffect.setDisplaySize(40, progressBar.height);
+        preloadText.x = this.preloaderBarContainer.x;
+        preloadText.y = this.preloaderBarContainer.y - 10;
+
+        let coof = progressBar.width/progressBar.displayWidth;
 
         this.load.on('progress', function (value) {
             console.log(value);
-            progressBar.setCrop(0,0,window.innerWidth/2 * value, 35);
-            progressEffect.x = (progressBar.x - progressBar.displayWidth/2) + (window.innerWidth/2 - 90) * value;
+            progressBar.setCrop(0,0,progressBar.width * value, progressBar.height);
+            let orient_coof = window.innerHeight/window.innerWidth > 1? 50 : 30;
+            progressEffect.x = (preloadText.x - progressBar.displayWidth/2) + (window.innerWidth/2 - (orient_coof / coof))  * value;
             preloadText.text = parseInt(value * 100, 10).toString() + " %";
         });
 
@@ -65,8 +68,7 @@ class Preloader extends Phaser.Scene
         });
 
         this.load.on('complete', function () {
-            background.destroy();
-            progressBar.destroy();
+
             console.log('complete');
         });
 
@@ -105,12 +107,19 @@ class Preloader extends Phaser.Scene
     }
 
     placePreloadBar(image){
-        let preloaderBack = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 10,'preloaderBack');
+        this.preloaderBarContainer = this.add.container(window.innerWidth/2,(window.innerHeight/4 * 3));
+        let preloaderBack = this.add.sprite(0, 0,'preloaderBack');
         preloaderBack.setDisplaySize(window.innerWidth/2, 30);
-        let preloaderBar = this.add.sprite(window.innerWidth/2,window.innerHeight/4 * 3,image);
-        preloaderBar.setDisplaySize(window.innerWidth/2, 50);
-        let preloaderFront = this.add.sprite(window.innerWidth/2,(window.innerHeight/4 * 3) - 15,'preloaderFront');
-        preloaderFront.setDisplaySize(window.innerWidth/2 + 60, 60);
+        this.preloaderBarContainer.add(preloaderBack);
+        let preloaderBar = this.add.sprite(0,0,image);
+        preloaderBar.setDisplaySize(window.innerWidth/2, 30);
+        this.preloaderBarContainer.add(preloaderBar);
+        let preloaderFront = this.add.sprite(0, -5,'preloaderFront');
+        if (window.innerHeight/window.innerWidth > 1)
+            preloaderFront.setDisplaySize(window.innerWidth/2 + 40, 60);
+        else
+            preloaderFront.setDisplaySize(window.innerWidth/2 + 100, 60);
+        this.preloaderBarContainer.add(preloaderFront);
         return preloaderBar;
     }
 
@@ -191,7 +200,11 @@ class Game extends Phaser.Scene
         this.canChoose = true;
         this.addButtonListeners();
         this.scale.on('resize', this.resize, this);
-
+        this.main_menu_music = this.sound.add('base_view');
+        this.main_menu_music.play();
+        this.choose_building_music = this.sound.add('build');
+        this.place_building_music = this.sound.add('build_placed');
+        this.popup_music = this.sound.add('popup');
     }
 
     // Tutorial steps controller
@@ -265,7 +278,7 @@ class Game extends Phaser.Scene
             element.setData('active', true);
             this.activeBuildingBut = element;
         }
-
+        this.choose_building_music.play();
     }
 
     freePlayBuildingActions(element){
@@ -284,6 +297,7 @@ class Game extends Phaser.Scene
                 element.clearTint();
             }
         });
+        this.choose_building_music.play();
     }
     // Holes buttons listeners
     addHolesListener(){
@@ -308,6 +322,7 @@ class Game extends Phaser.Scene
         this.nextStep();
         this.activeBuildingBut.setData('active', false);
         element.destroy();
+        this.place_building_music.play();
     }
 
     freePlayHolesActions(element){
@@ -316,6 +331,7 @@ class Game extends Phaser.Scene
             this.currentBuilding, element.getData('id'));
         this.activeBuildingBut.setData('active', false);
         element.destroy();
+        this.place_building_music.play();
     }
 
     // Resize user interface
@@ -891,6 +907,7 @@ class Game extends Phaser.Scene
     showLevelUp(){
         this.clearAll();
         this.setTint();
+        this.popup_music.play();
         this.levelUpContainer = this.add.container(window.innerWidth/2, (window.innerHeight/4) * 3);
         let popup = this.add.sprite(0, 0, 'popup');
         if (window.innerHeight/window.innerWidth > 1) {
