@@ -17,7 +17,7 @@ class Boot extends Phaser.Scene
         this.load.image('preloaderBack', 'Assets/Sprites/preloader_back.jpg');
         this.load.image('preloaderEffect', 'Assets/Sprites/preloader_effect.png');
         this.load.image('logo_horizontal', 'Assets/Sprites/logo-horizontal.png');
-        this.load.bitmapFont('CandaraBold', 'Assets/Fonts/CandaraBold.png', 'Assets/Fonts/CandaraBold.fnt');
+        this.load.bitmapFont('CandaraBold', 'Assets/Fonts/CandaraBoldUpd.png', 'Assets/Fonts/CandaraBoldUpd.fnt');
 
         this.load.once('complete', function () {
 
@@ -43,15 +43,14 @@ class Preloader extends Phaser.Scene
     }
 
     preload(){
-
         let background = this.placeBackground('preloaderBackground');
         let progressBar = this.placePreloadBar('preloadBar');
         let logoHorizontal = this.placeLogo('logo_horizontal');
         let progressEffect = this.add.sprite(this.preloaderBarContainer.x, this.preloaderBarContainer.y - 5,'preloaderEffect');
         let preloadText = this.addText();
         progressEffect.setDisplaySize(40, progressBar.height);
-        preloadText.x = this.preloaderBarContainer.x;
-        preloadText.y = this.preloaderBarContainer.y - 10;
+        preloadText.x = this.preloaderBarContainer.x;// - preloadText.width/2;
+        preloadText.y = this.preloaderBarContainer.y - 10;// - preloadText.height/2 - 10;
 
         let coof = progressBar.width/progressBar.displayWidth;
 
@@ -152,7 +151,7 @@ class Preloader extends Phaser.Scene
     }
 
     addText(){
-        let text = this.add.text(0,0, "", {fontSize: '20px', align: 'center'});
+        let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'My captain,\nBuild Constructions', 20, 1);
         return text;
     }
 
@@ -183,6 +182,7 @@ class Game extends Phaser.Scene
         this.buildingIcons = ['mine_farm','mine_ore','mine_villa'];
         this.buildingsOnMap = ['icon_farm','icon_ore','icon_gold'];
         this.placedBuildings = [];
+        this.addedResources = [];
         this.buildingsCounter = 0;
         this.isTutorial = true;
     }
@@ -268,16 +268,23 @@ class Game extends Phaser.Scene
     tutorialBuildingActions(element){
         if (!element.getData('active')) {
             if (this.canChoose) {
-                this.stopArrow(element.getData('id'));
                 this.canChoose = false;
                 this.currentStep++;
                 this.nextStep();
+                this.moveArrow();
                 this.canChoose = false;
                 this.currentBuilding = this.buildingsOnMap[element.getData('id')]
             }
             element.setData('active', true);
             this.activeBuildingBut = element;
         }
+        this.buildings.forEach(inElement => {
+            if (inElement.getData('id') !== element.getData('id')){
+                inElement.setTint(0x444444);
+            }else{
+                element.clearTint();
+            }
+        });
         this.choose_building_music.play();
     }
 
@@ -721,51 +728,70 @@ class Game extends Phaser.Scene
 
     // Method for placing buildings
     placeBuilding(position, width, image, id){
-        let building = this.add.sprite(position.x + 5,position.y - 50, image).setAlpha(0.2);
+        let building = this.add.sprite(position.x + 5,position.y - 50, image).setAlpha(0.5);
         let coof = building.width/building.height;
         building.setDisplaySize(width*0.8,width*0.8/coof);
         this.tweens.add({
             targets: building,
             y: position.y - 20,
             alpha: 1,
-            ease: 'Linear',
+            ease: 'Quint.easeIn',
             duration: 600,
             repeat: 0
         });
         building.setData('id', id);
         this.placedBuildings[this.buildingsCounter] = building;
         this.holesContainer.add(building);
-        this.buildingsCounter++;
         let resource;
-        switch(image){
-            case 'icon_farm':
-                resource = this.placeResuorce('icon_resource_food', position.x, position.y);
-                break;
-            case 'icon_gold':
-                resource = this.placeResuorce('icon_resource_gold', position.x, position.y);
-                break;
-            case 'icon_ore':
-                resource = this.placeResuorce('icon_resource_ore', position.x, position.y);
-                break;
-        }
+        this.time.delayedCall(800, ()=>{
+            switch(image){
+                case 'icon_farm':
+                    resource = this.placeResource('icon_resource_food', position.x, position.y);
+                    break;
+                case 'icon_gold':
+                    resource = this.placeResource('icon_resource_gold', position.x, position.y);
+                    break;
+                case 'icon_ore':
+                    resource = this.placeResource('icon_resource_ore', position.x, position.y);
+                    break;
+            }
+            this.addedResources[this.buildingsCounter] = resource;
+            this.buildingsCounter++;
+        },[],0);
     }
 
-    placeResuorce(image, x, y){
-        let resource = this.add.sprite(this.holesContainer.x + x + 5,this.holesContainer.y + y - 20,image);
+    placeResource(image, x, y){
+        let resourceContainer = this.add.container(this.holesContainer.x + x + 5,this.holesContainer.y + y - 20);
+        let resource = this.add.sprite(0,0,image);
         let coof = resource.height/resource.width;
-        resource.setDisplaySize(50,50 * coof);
+        if (image === 'icon_resource_gold')
+            resource.setDisplaySize(40,40 * coof);
+        else
+            resource.setDisplaySize(50,50 * coof);
+        let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'+1', 30, 1);
+        resourceContainer.add(resource);
+        resourceContainer.add(text);
         resource.setAlpha(0.2);
+        text.setAlpha(0.2);
         this.tweens.add({
             targets: resource,
-            y: this.holesContainer.y + y - 80,
+            y: - 60,
             alpha: 1,
             duration: 1200,
-            ease: 'Linear',
-            loop: true,
-            repeat: -1,
-            yoyo: false,
+            ease: 'Power1'
         });
-        return resource;
+        this.time.delayedCall(1200, ()=>{
+            this.tweens.add({
+                targets: text,
+                y: -60,
+                alpha: 1,
+                duration: 1200,
+                ease: 'Power1',
+                loop: 500,
+                loopDelay: 500,
+            });
+        },[],0);
+        return resourceContainer;
     }
 
     replaceBuildings(){
@@ -857,50 +883,50 @@ class Game extends Phaser.Scene
 
     // Work with arrow
     addArrow(){
-        this.arrow = this.add.sprite(this.buildingButContainer.x + this.buildings[0].x,
-            this.buildingButContainer.y  - this.buildings[0].displayHeight, 'arrow');
+        this.arrow = this.add.sprite(this.buildingButContainer.x + this.buildings[1].x,
+            this.buildingButContainer.y  - this.buildings[1].displayHeight, 'arrow');
         let coof = this.arrow.height/this.arrow.width;
         this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
         this.tweens.add({
            targets: this.arrow,
-            x: this.buildingButContainer.x + this.buildings[2].x,
+            y:  this.buildingButContainer.y  - this.buildings[1].displayHeight - 30,
             ease: 'Linear',
             repeat: -1,
+            duration: 400,
             yoyo: true
         });
     }
 
     replaceArrow(){
         this.tweens.killTweensOf(this.arrow);
-        this.arrow.x = this.buildingButContainer.x + this.buildings[0].x;
-        this.arrow.y = this.buildingButContainer.y  - this.buildings[0].displayHeight;
+        this.arrow.x = this.buildingButContainer.x + this.buildings[1].x;
+        this.arrow.y = this.buildingButContainer.y  - this.buildings[1].displayHeight;
         let coof = this.arrow.height/this.arrow.width;
-        this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
+        this.arrow.setDisplaySize(window.innerWidth/30, window.innerWidth/30 * coof);
         this.tweens.add({
             targets: this.arrow,
-            x: this.buildingButContainer.x + this.buildings[2].x,
+            y: this.buildingButContainer.y  - this.buildings[1].displayHeight - 30,
             ease: 'Linear',
             repeat: -1,
+            duration: 400,
             yoyo: true
         });
     }
 
-    stopArrow(id){
-        this.tweens.killTweensOf(this.arrow);
-        this.buildings.forEach(element => {
-           if (element.getData('id') === id){
-               this.arrow.y = this.buildingButContainer.y + this.buildings[id].y - this.buildings[id].displayWidth;
-               this.tweens.add({
-                   targets: this.arrow,
-                   x: this.buildingButContainer.x + this.buildings[id].x,
-                   ease: 'Linear',
-                   duration: 300,
-                   yoyo: false
-               });
-           }else{
-               element.setTint(0x444444);
-           }
-        });
+    moveArrow(){
+       this.tweens.killTweensOf(this.arrow);
+       this.arrow.x = this.holesContainer.x + this.holes[0].x + this.holes[0].displayWidth/1.5;
+       this.arrow.y = this.holesContainer.y + this.holes[0].y;
+       // Degrees to rads
+       this.arrow.rotation = 90/57.3;
+       this.tweens.add({
+           targets: this.arrow,
+           x: this.holesContainer.x + this.holes[0].x + this.holes[0].displayWidth/1.5 + 30,
+           ease: 'Linear',
+           duration: 400,
+           repeat: -1,
+           yoyo: true
+       });
     }
 
 
@@ -919,6 +945,9 @@ class Game extends Phaser.Scene
             loop: 0
         });
         this.placedBuildings.forEach(element =>{
+            element.destroy();
+        });
+        this.addedResources.forEach(element => {
             element.destroy();
         });
         this.placedBuildings = [];

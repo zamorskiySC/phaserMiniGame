@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e200f66f-674e-4d60-bde9-83d7251df420" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/CandaraBold.fnt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/CandaraBold.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,48 +20,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="761" column="26" selection-start-line="761" selection-start-column="26" selection-end-line="761" selection-end-column="26" />
+            <state relative-caret-position="190">
+              <caret line="894" column="23" selection-start-line="894" selection-start-column="23" selection-end-line="894" selection-end-column="23" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
-                <element signature="n#!!block;n#placePreloadBar#0;n#Preloader#0" />
-                <element signature="n#!!block;n#placeBackground#0;n#Preloader#0" />
-                <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
-                <element signature="n#!!block;n#addText#0;n#Preloader#0" />
-                <element signature="n#!!block;n#create#0;n#Preloader#0" />
-                <element signature="n#!!block;n#constructor#0;n#Game#0" />
-                <element signature="n#!!block;n#create#0;n#Game#0" />
-                <element signature="n#!!block;n#nextStep#0;n#Game#0" />
-                <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
-                <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
-                <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
-                <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
-                <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
-                <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
-                <element signature="n#!!block;n#resize#0;n#Game#0" />
-                <element signature="n#!!block;n#setTint#0;n#Game#0" />
-                <element signature="n#!!block;n#removeTint#0;n#Game#0" />
-                <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
-                <element signature="n#!!block;n#placeText#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeText#0;n#Game#0" />
-                <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
-                <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
-                <element signature="n#!!block;n#replaceInstallButtonFreePlay#0;n#Game#0" />
-                <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeBackground#0;n#Game#0" />
-                <element signature="n#!!block;n#placeCharacter#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeCharacter#0;n#Game#0" />
-                <element signature="n#!!block;n#placeLogo#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeLogo#0;n#Game#0" />
-                <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
-                <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
-                <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-                <element signature="n#!!block;n#addArrow#0;n#Game#0" />
-                <element signature="n#!!block;n#replaceArrow#0;n#Game#0" />
-                <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
-                <element signature="n#!!block;n#clearAll#0;n#Game#0" />
-                <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
                 <element signature="n#!!block;n#update#0;n#Game#0" />
                 <element signature="n#Step#0" />
                 <element signature="n#!!block;n#constructor#0;n#Finish#0" />
@@ -73,6 +36,7 @@
                 <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
                 <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
+                <element signature="e#27944#28324#0" />
               </folding>
             </state>
           </provider>
@@ -81,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="109">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
@@ -108,6 +72,7 @@
       <find>placedB</find>
       <find>buil</find>
       <find>buildings</find>
+      <find>bitmap</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,8 +119,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TestGame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TestGame" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,16 +180,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232487000" />
+    <option name="totallyTimeSpent" value="244755000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.23731588" visible="true" weight="0.12946428" />
-      <window_info id="Structure" order="1" sideWeight="0.7626841" side_tool="true" visible="true" weight="0.12946428" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.24071082" visible="true" weight="0.12802951" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.7592892" side_tool="true" visible="true" weight="0.12802951" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -389,48 +365,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="761" column="26" selection-start-line="761" selection-start-column="26" selection-end-line="761" selection-end-column="26" />
+        <state relative-caret-position="190">
+          <caret line="894" column="23" selection-start-line="894" selection-start-column="23" selection-end-line="894" selection-end-column="23" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
-            <element signature="n#!!block;n#placePreloadBar#0;n#Preloader#0" />
-            <element signature="n#!!block;n#placeBackground#0;n#Preloader#0" />
-            <element signature="n#!!block;n#placeLogo#0;n#Preloader#0" />
-            <element signature="n#!!block;n#addText#0;n#Preloader#0" />
-            <element signature="n#!!block;n#create#0;n#Preloader#0" />
-            <element signature="n#!!block;n#constructor#0;n#Game#0" />
-            <element signature="n#!!block;n#create#0;n#Game#0" />
-            <element signature="n#!!block;n#nextStep#0;n#Game#0" />
-            <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
-            <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
-            <element signature="n#!!block;n#freePlayBuildingActions#0;n#Game#0" />
-            <element signature="n#!!block;n#addHolesListener#0;n#Game#0" />
-            <element signature="n#!!block;n#tutorialHolesActions#0;n#Game#0" />
-            <element signature="n#!!block;n#freePlayHolesActions#0;n#Game#0" />
-            <element signature="n#!!block;n#resize#0;n#Game#0" />
-            <element signature="n#!!block;n#setTint#0;n#Game#0" />
-            <element signature="n#!!block;n#removeTint#0;n#Game#0" />
-            <element signature="n#!!block;n#placeBuildingsButton#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeBuildingButtons#0;n#Game#0" />
-            <element signature="n#!!block;n#placeText#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeText#0;n#Game#0" />
-            <element signature="n#!!block;n#createInstallButton#0;n#Game#0" />
-            <element signature="n#!!block;n#replaceInstallButton#0;n#Game#0" />
-            <element signature="n#!!block;n#replaceInstallButtonFreePlay#0;n#Game#0" />
-            <element signature="n#!!block;n#placeBackground#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeBackground#0;n#Game#0" />
-            <element signature="n#!!block;n#placeCharacter#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeCharacter#0;n#Game#0" />
-            <element signature="n#!!block;n#placeLogo#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeLogo#0;n#Game#0" />
-            <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
-            <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
-            <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
-            <element signature="n#!!block;n#addArrow#0;n#Game#0" />
-            <element signature="n#!!block;n#replaceArrow#0;n#Game#0" />
-            <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
-            <element signature="n#!!block;n#clearAll#0;n#Game#0" />
-            <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
             <element signature="n#!!block;n#update#0;n#Game#0" />
             <element signature="n#Step#0" />
             <element signature="n#!!block;n#constructor#0;n#Finish#0" />
@@ -443,13 +381,14 @@
             <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
             <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
+            <element signature="e#27944#28324#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="109">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
