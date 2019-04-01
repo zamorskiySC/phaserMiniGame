@@ -736,6 +736,36 @@ class Game extends Phaser.Scene
         this.placedBuildings[this.buildingsCounter] = building;
         this.holesContainer.add(building);
         this.buildingsCounter++;
+        let resource;
+        switch(image){
+            case 'icon_farm':
+                resource = this.placeResuorce('icon_resource_food', position.x, position.y);
+                break;
+            case 'icon_gold':
+                resource = this.placeResuorce('icon_resource_gold', position.x, position.y);
+                break;
+            case 'icon_ore':
+                resource = this.placeResuorce('icon_resource_ore', position.x, position.y);
+                break;
+        }
+    }
+
+    placeResuorce(image, x, y){
+        let resource = this.add.sprite(this.holesContainer.x + x + 5,this.holesContainer.y + y - 20,image);
+        let coof = resource.height/resource.width;
+        resource.setDisplaySize(50,50 * coof);
+        resource.setAlpha(0.2);
+        this.tweens.add({
+            targets: resource,
+            y: this.holesContainer.y + y - 80,
+            alpha: 1,
+            duration: 1200,
+            ease: 'Linear',
+            loop: true,
+            repeat: -1,
+            yoyo: false,
+        });
+        return resource;
     }
 
     replaceBuildings(){

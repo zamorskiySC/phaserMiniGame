@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2493">
-              <caret line="909" column="32" selection-start-line="909" selection-start-column="32" selection-end-line="909" selection-end-column="32" />
+            <state relative-caret-position="413">
+              <caret line="761" column="26" selection-start-line="761" selection-start-column="26" selection-end-line="761" selection-end-column="26" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
                 <element signature="n#!!block;n#placePreloadBar#0;n#Preloader#0" />
@@ -29,7 +29,7 @@
                 <element signature="n#!!block;n#addText#0;n#Preloader#0" />
                 <element signature="n#!!block;n#create#0;n#Preloader#0" />
                 <element signature="n#!!block;n#constructor#0;n#Game#0" />
-                <element signature="n#!!block;n#preload#0;n#Game#0" />
+                <element signature="n#!!block;n#create#0;n#Game#0" />
                 <element signature="n#!!block;n#nextStep#0;n#Game#0" />
                 <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
                 <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
@@ -53,12 +53,14 @@
                 <element signature="n#!!block;n#resizeCharacter#0;n#Game#0" />
                 <element signature="n#!!block;n#placeLogo#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeLogo#0;n#Game#0" />
-                <element signature="n#!!block;n#placeBuilding#0;n#Game#0" />
                 <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
                 <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
                 <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
                 <element signature="n#!!block;n#addArrow#0;n#Game#0" />
+                <element signature="n#!!block;n#replaceArrow#0;n#Game#0" />
                 <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
+                <element signature="n#!!block;n#clearAll#0;n#Game#0" />
+                <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
                 <element signature="n#!!block;n#update#0;n#Game#0" />
                 <element signature="n#Step#0" />
                 <element signature="n#!!block;n#constructor#0;n#Finish#0" />
@@ -140,7 +142,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -197,19 +199,19 @@
       <workItem from="1551774031720" duration="91034000" />
       <workItem from="1552569906167" duration="12339000" />
       <workItem from="1552648778316" duration="78145000" />
-      <workItem from="1553595543822" duration="5703000" />
+      <workItem from="1553595543822" duration="6012000" />
+      <workItem from="1553868328091" duration="2110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230068000" />
+    <option name="totallyTimeSpent" value="232487000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.23895253" visible="true" weight="0.12946428" />
-      <window_info id="Structure" order="1" sideWeight="0.7610475" side_tool="true" visible="true" weight="0.12946428" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.23731588" visible="true" weight="0.12946428" />
+      <window_info id="Structure" order="1" sideWeight="0.7626841" side_tool="true" visible="true" weight="0.12946428" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
@@ -387,8 +389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2493">
-          <caret line="909" column="32" selection-start-line="909" selection-start-column="32" selection-end-line="909" selection-end-column="32" />
+        <state relative-caret-position="413">
+          <caret line="761" column="26" selection-start-line="761" selection-start-column="26" selection-end-line="761" selection-end-column="26" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
             <element signature="n#!!block;n#placePreloadBar#0;n#Preloader#0" />
@@ -397,7 +399,7 @@
             <element signature="n#!!block;n#addText#0;n#Preloader#0" />
             <element signature="n#!!block;n#create#0;n#Preloader#0" />
             <element signature="n#!!block;n#constructor#0;n#Game#0" />
-            <element signature="n#!!block;n#preload#0;n#Game#0" />
+            <element signature="n#!!block;n#create#0;n#Game#0" />
             <element signature="n#!!block;n#nextStep#0;n#Game#0" />
             <element signature="n#!!block;n#addButtonListeners#0;n#Game#0" />
             <element signature="n#!!block;n#tutorialBuildingActions#0;n#Game#0" />
@@ -421,12 +423,14 @@
             <element signature="n#!!block;n#resizeCharacter#0;n#Game#0" />
             <element signature="n#!!block;n#placeLogo#0;n#Game#0" />
             <element signature="n#!!block;n#resizeLogo#0;n#Game#0" />
-            <element signature="n#!!block;n#placeBuilding#0;n#Game#0" />
             <element signature="n#!!block;n#replaceBuildings#0;n#Game#0" />
             <element signature="n#!!block;n#placeHoles#0;n#Game#0" />
             <element signature="n#!!block;n#resizeHoles#0;n#Game#0" />
             <element signature="n#!!block;n#addArrow#0;n#Game#0" />
+            <element signature="n#!!block;n#replaceArrow#0;n#Game#0" />
             <element signature="n#!!block;n#stopArrow#0;n#Game#0" />
+            <element signature="n#!!block;n#clearAll#0;n#Game#0" />
+            <element signature="n#!!block;n#showLevelUp#0;n#Game#0" />
             <element signature="n#!!block;n#update#0;n#Game#0" />
             <element signature="n#Step#0" />
             <element signature="n#!!block;n#constructor#0;n#Finish#0" />
