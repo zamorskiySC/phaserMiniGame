@@ -140,13 +140,14 @@ class Preloader extends Phaser.Scene
     placeLogo(image){
         this.logoHorizontal = this.add.sprite(0,0,image);
         let coof = this.logoHorizontal.height / this.logoHorizontal.width;
-        this.logoHorizontal.setDisplaySize(300,300 * coof);
         if (window.innerHeight/window.innerWidth > 1) {
             this.logoHorizontal.x = window.innerWidth / 2;
-            this.logoHorizontal.y = 100;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/2,window.innerWidth/2 * coof);
+            this.logoHorizontal.y = window.innerHeight/7;
         }else{
-            this.logoHorizontal.x = window.innerWidth - 250;
-            this.logoHorizontal.y = 100;
+            this.logoHorizontal.x = window.innerWidth/8 * 7;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/5,window.innerWidth/5 * coof);
+            this.logoHorizontal.y = window.innerHeight/6;
         }
     }
 
@@ -237,7 +238,7 @@ class Game extends Phaser.Scene
                     counter++;
                 });
                 this.buildings.forEach(element => {
-                    if (element.getData('id') !== currBuildingId){
+                    if (element.getData('id') === currBuildingId){
                         element.setTint(0x444444);
                     }
                 });
@@ -279,10 +280,10 @@ class Game extends Phaser.Scene
             this.activeBuildingBut = element;
         }
         this.buildings.forEach(inElement => {
-            if (inElement.getData('id') !== element.getData('id')){
-                inElement.setTint(0x444444);
+            if (inElement.getData('id') === element.getData('id')){
+                element.setTint(0x444444);
             }else{
-                element.clearTint();
+                inElement.clearTint();
             }
         });
         this.choose_building_music.play();
@@ -298,10 +299,10 @@ class Game extends Phaser.Scene
             this.activeBuildingBut = element;
         }
         this.buildings.forEach(inElement => {
-            if (inElement.getData('id') !== element.getData('id')){
-                inElement.setTint(0x444444);
+            if (inElement.getData('id') === element.getData('id')){
+                element.setTint(0x444444);
             }else{
-                element.clearTint();
+                inElement.clearTint();
             }
         });
         this.choose_building_music.play();
@@ -432,13 +433,13 @@ class Game extends Phaser.Scene
     placeText(){
         this.textContainer = this.add.container(0,0);
         if (window.innerHeight/window.innerWidth > 1) {
-            this.textContainer.x = window.innerWidth/2;
+            this.textContainer.x = window.innerWidth/3 * 2;
             this.textContainer.y = (window.innerHeight/5) * 4;
             let back_text = this.add.sprite(0, 0, 'ver_text');
             back_text.setDisplaySize(window.innerWidth, window.innerHeight/7);
             back_text.setData('name', 'back');
             let fontS = window.innerWidth/27;
-            let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'My captain,\nBuild Constructions', fontS, 1);
+            let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'My captain,\nBuild Constructions', fontS, 2);
             text.x = -40;
             text.y = -20;
             text.setData('name', 'text');
@@ -462,7 +463,7 @@ class Game extends Phaser.Scene
 
     resizeText(){
         if (window.innerHeight/window.innerWidth > 1) {
-            this.textContainer.x = window.innerWidth/2;
+            this.textContainer.x = window.innerWidth/3 * 2;
             this.textContainer.y =(window.innerHeight/5) * 4;
             this.textContainer.list.forEach(element => {
                 let coof = 0;
@@ -706,24 +707,29 @@ class Game extends Phaser.Scene
     placeLogo(image){
         let logo = this.add.sprite(0,0,image);
         let coof = logo.height / logo.width;
-        logo.setDisplaySize(200,200 * coof);
         if (window.innerHeight/window.innerWidth > 1) {
             logo.x = window.innerWidth / 2;
-            logo.y = 100;
+            logo.setDisplaySize(window.innerWidth/2,window.innerWidth/2 * coof);
+            logo.y = window.innerHeight/7;
         }else{
-            logo.x = window.innerWidth - 150;
-            logo.y = 100;
+            logo.x = window.innerWidth/8 * 7;
+            logo.setDisplaySize(window.innerWidth/5,window.innerWidth/5 * coof);
+            logo.y = window.innerHeight/6;
         }
         return logo;
     }
 
     resizeLogo(){
+        let coof = this.logoHorizontal.height / this.logoHorizontal.width;
         if (window.innerHeight/window.innerWidth > 1) {
             this.logoHorizontal.x = window.innerWidth / 2;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/2,window.innerWidth/2 * coof);
+            this.logoHorizontal.y = window.innerHeight/7;
         }else{
-            this.logoHorizontal.x = window.innerWidth - 150;
+            this.logoHorizontal.x = window.innerWidth/7 * 6;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/5,window.innerWidth/5 * coof);
+            this.logoHorizontal.y = window.innerHeight/6;
         }
-        this.logoHorizontal.y = 100;
     }
 
     // Method for placing buildings
@@ -764,11 +770,23 @@ class Game extends Phaser.Scene
         let resourceContainer = this.add.container(this.holesContainer.x + x + 5,this.holesContainer.y + y - 20);
         let resource = this.add.sprite(0,0,image);
         let coof = resource.height/resource.width;
-        if (image === 'icon_resource_gold')
-            resource.setDisplaySize(40,40 * coof);
-        else
-            resource.setDisplaySize(50,50 * coof);
-        let text = this.add.bitmapText(0, 0, 'CandaraBold' ,'+1', 30, 1);
+        if (window.innerHeight/window.innerWidth > 1) {
+            if (image === 'icon_resource_gold')
+                resource.setDisplaySize(window.innerWidth / 15, window.innerWidth / 15 * coof);
+            else
+                resource.setDisplaySize(window.innerWidth / 11, window.innerWidth / 11 * coof);
+        }else{
+            if (image === 'icon_resource_gold')
+                resource.setDisplaySize(window.innerWidth / 24, window.innerWidth / 24 * coof);
+            else
+                resource.setDisplaySize(window.innerWidth / 20, window.innerWidth / 20 * coof);
+        }
+        let text;
+        if (window.innerHeight/window.innerWidth > 1) {
+            text = this.add.text(0, 0,'+1', {fontSize: (window.innerWidth / 21).toString() + 'px', align: 'center', fontStyle: 'bold'});
+        }else {
+            text = this.add.text(0, 0, '+1',{fontSize: (window.innerWidth / 31).toString() + 'px', align: 'center', fontStyle: 'bold'});
+        }
         resourceContainer.add(resource);
         resourceContainer.add(text);
         resource.setAlpha(0.2);
@@ -884,15 +902,18 @@ class Game extends Phaser.Scene
     // Work with arrow
     addArrow(){
         this.arrow = this.add.sprite(this.buildingButContainer.x + this.buildings[1].x,
-            this.buildingButContainer.y  - this.buildings[1].displayHeight, 'arrow');
+            this.buildingButContainer.y  - this.buildings[1].displayHeight/3 * 2, 'arrow');
         let coof = this.arrow.height/this.arrow.width;
-        this.arrow.setDisplaySize(window.innerWidth/25, window.innerWidth/20 * coof);
+        if (window.innerHeight/window.innerWidth > 1)
+            this.arrow.setDisplaySize(window.innerWidth/16, window.innerWidth/16 * coof);
+        else
+            this.arrow.setDisplaySize(window.innerWidth/30, window.innerWidth/30 * coof);
         this.tweens.add({
            targets: this.arrow,
             y:  this.buildingButContainer.y  - this.buildings[1].displayHeight - 30,
             ease: 'Linear',
             repeat: -1,
-            duration: 400,
+            duration: 650,
             yoyo: true
         });
     }
@@ -900,15 +921,18 @@ class Game extends Phaser.Scene
     replaceArrow(){
         this.tweens.killTweensOf(this.arrow);
         this.arrow.x = this.buildingButContainer.x + this.buildings[1].x;
-        this.arrow.y = this.buildingButContainer.y  - this.buildings[1].displayHeight;
+        this.arrow.y = this.buildingButContainer.y - this.buildings[1].displayHeight;
         let coof = this.arrow.height/this.arrow.width;
-        this.arrow.setDisplaySize(window.innerWidth/30, window.innerWidth/30 * coof);
+        if (window.innerHeight/window.innerWidth > 1)
+            this.arrow.setDisplaySize(window.innerWidth/16, window.innerWidth/16 * coof);
+        else
+            this.arrow.setDisplaySize(window.innerWidth/30, window.innerWidth/30 * coof);
         this.tweens.add({
             targets: this.arrow,
             y: this.buildingButContainer.y  - this.buildings[1].displayHeight - 30,
             ease: 'Linear',
             repeat: -1,
-            duration: 400,
+            duration: 650,
             yoyo: true
         });
     }
@@ -923,7 +947,7 @@ class Game extends Phaser.Scene
            targets: this.arrow,
            x: this.holesContainer.x + this.holes[0].x + this.holes[0].displayWidth/1.5 + 30,
            ease: 'Linear',
-           duration: 400,
+           duration: 650,
            repeat: -1,
            yoyo: true
        });
@@ -1009,7 +1033,7 @@ class Game extends Phaser.Scene
 
     update(){
         if (this.buildingsCounter === 4){
-            this.time.delayedCall(1000, ()=>{
+            this.time.delayedCall(2000, ()=>{
                 this.showLevelUp();
             },[],0);
             this.buildingsCounter++;
@@ -1103,13 +1127,14 @@ class Finish extends Phaser.Scene
     placeLogo(image){
         this.logoHorizontal = this.add.sprite(0,0,image);
         let coof = this.logoHorizontal.height / this.logoHorizontal.width;
-        this.logoHorizontal.setDisplaySize(300,300 * coof);
         if (window.innerHeight/window.innerWidth > 1) {
             this.logoHorizontal.x = window.innerWidth / 2;
             this.logoHorizontal.y = 100;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/2,window.innerWidth/2 * coof);
         }else{
             this.logoHorizontal.x = window.innerWidth - 250;
             this.logoHorizontal.y = 100;
+            this.logoHorizontal.setDisplaySize(window.innerWidth/5,window.innerWidth/5 * coof);
         }
     }
 

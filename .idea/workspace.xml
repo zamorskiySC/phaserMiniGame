@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e200f66f-674e-4d60-bde9-83d7251df420" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/CandaraBold.fnt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/CandaraBold.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,23 +19,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="894" column="23" selection-start-line="894" selection-start-column="23" selection-end-line="894" selection-end-column="23" />
+            <state relative-caret-position="247">
+              <caret line="1125" lean-forward="true" selection-start-line="1125" selection-end-line="1125" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
-                <element signature="n#!!block;n#update#0;n#Game#0" />
                 <element signature="n#Step#0" />
                 <element signature="n#!!block;n#constructor#0;n#Finish#0" />
                 <element signature="n#!!block;n#resize#0;n#Finish#0" />
                 <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
-                <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
                 <element signature="n#!!block;n#placeTextContainer#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
                 <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
                 <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
-                <element signature="e#27944#28324#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,11 +76,12 @@
       <find>module.exports</find>
       <find>ex</find>
       <find>coof</find>
-      <find>setTint</find>
       <find>placedB</find>
       <find>buil</find>
       <find>buildings</find>
       <find>bitmap</find>
+      <find>clearTint</find>
+      <find>setTint</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,7 +98,6 @@
         <option value="$PROJECT_DIR$/rexuiplugin.min.js" />
         <option value="$PROJECT_DIR$/plugins/gameobjects/shape/utils/ArcTo.js" />
         <option value="$PROJECT_DIR$/NewFiles/Game.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/plugins/utils/math/DegToRad.js" />
         <option value="$PROJECT_DIR$/plugins/gameobjects/shape/utils/FillPathWebGL.js" />
         <option value="$PROJECT_DIR$/plugins/gameobjects/shape/utils/StrokePathWebGL.js" />
@@ -97,6 +105,7 @@
         <option value="$PROJECT_DIR$/plugins/gameobjects/shape/utils/LineStyleCanvas.js" />
         <option value="$PROJECT_DIR$/plugins/geom/utils/Earcut.js" />
         <option value="$PROJECT_DIR$/plugins/gameobjects/shape/roundrectangle/RoundRectangleRender.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/Game.js" />
       </list>
     </option>
@@ -108,10 +117,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="2445" />
+    <option name="y" value="9" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -180,14 +189,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244755000" />
+    <option name="totallyTimeSpent" value="260033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.24071082" visible="true" weight="0.12802951" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.7592892" side_tool="true" visible="true" weight="0.12802951" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.33764136" visible="true" weight="0.12802951" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.66235864" side_tool="true" visible="true" weight="0.12802951" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
@@ -356,40 +364,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        <state relative-caret-position="352">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="894" column="23" selection-start-line="894" selection-start-column="23" selection-end-line="894" selection-end-column="23" />
+        <state relative-caret-position="247">
+          <caret line="1125" lean-forward="true" selection-start-line="1125" selection-end-line="1125" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Preloader#0" />
-            <element signature="n#!!block;n#update#0;n#Game#0" />
             <element signature="n#Step#0" />
             <element signature="n#!!block;n#constructor#0;n#Finish#0" />
             <element signature="n#!!block;n#resize#0;n#Finish#0" />
             <element signature="n#!!block;n#placeBackground#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeBackground#0;n#Finish#0" />
-            <element signature="n#!!block;n#placeLogo#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeLogo#0;n#Finish#0" />
             <element signature="n#!!block;n#placeTextContainer#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeTextContainer#0;n#Finish#0" />
             <element signature="n#!!block;n#createInstallButton#0;n#Finish#0" />
             <element signature="n#!!block;n#resizeInstallButton#0;n#Finish#0" />
-            <element signature="e#27944#28324#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/utils/math/DegToRad.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
